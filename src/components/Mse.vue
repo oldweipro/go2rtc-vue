@@ -1,6 +1,6 @@
 <template>
   <div>
-    <video style="width:600px" ref="videoMse" autoplay muted playsinline controls></video>
+    <video style="width:600px" ref="videoMse" autoplay muted playsinline></video>
   </div>
 </template>
 
@@ -54,7 +54,11 @@ const pushPacket = () => {
 
 const readPacket = (packet: ArrayBuffer) => {
   if (!mseStreamingStarted.value && mseSourceBuffer.value) {
-    mseSourceBuffer.value.appendBuffer(packet);
+    try {
+      mseSourceBuffer.value.appendBuffer(packet);
+    } catch (e) {
+      window.location.reload();
+    }
     mseStreamingStarted.value = true;
     return;
   }
@@ -69,7 +73,6 @@ const readPacket = (packet: ArrayBuffer) => {
 onMounted(() => {
   if (videoMse.value) {
     videoMse.value.addEventListener("pause", (event) => {
-      console.log("videoMse暂停: ", event);
       if (videoMse.value && videoMse.value.currentTime > videoMse.value.buffered.end(videoMse.value.buffered.length - 1)) {
         if (videoMse.value.buffered) {
           videoMse.value.currentTime = videoMse.value.buffered.end(videoMse.value.buffered.length - 1) - 0.1;
