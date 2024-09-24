@@ -1,6 +1,6 @@
 <template>
   <div>
-    <video style="width:600px" ref="videoMse" autoplay muted playsinline></video>
+    <video style="width: 80vw; height: auto;" ref="videoMse" autoplay muted playsinline></video>
   </div>
 </template>
 
@@ -80,7 +80,7 @@ onMounted(() => {
         }
       }
     });
-    startPlay("ws://192.168.2.30:1984/api/ws?src=hiktest");
+    startPlay("ws://127.0.0.1:1984/api/ws?src=home");
   }
 });
 
