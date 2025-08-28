@@ -46,3 +46,4 @@ dist_electron
 .vscode
 build
 coverage
+.claude

@@ -1,13 +1,17 @@
-<script setup lang="ts">
-import Mse from './components/Mse.vue'
-</script>
-
 <template>
-  <Mse class="mse"/>
+  <div id="app">
+    <router-view />
+  </div>
 </template>
 
+<script setup lang="ts">
+</script>
+
 <style scoped>
-.mse:hover {
-  filter: drop-shadow(0 0 2em #429CB8AA);
+#app {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 </style>
